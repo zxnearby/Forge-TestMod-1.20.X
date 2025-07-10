@@ -17,25 +17,18 @@ import org.slf4j.Logger;
 @Mod(TTWORLD.MOD_ID)
 public class TTWORLD
 {
-    // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "ttworld";
-    // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public TTWORLD(FMLJavaModLoadingContext context)
     {
         IEventBus modEventBus = context.getModEventBus();
-
         modEventBus.addListener(this::commonSetup);
 
 
-        // Register ourselves for server and other game events we are interested in
+
         MinecraftForge.EVENT_BUS.register(this);
-
-        // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
-
-        // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
